@@ -9,12 +9,12 @@ env:
   MONGODB_DB_NAME: gha-demo #available in all jobs
 jobs:
   test:
+    environment: testing #added info to select specific env variables (secrets) from github
     env:
       MONGODB_CLUSTER_ADDRESS: cluster0.ymp5di9.mongodb.net #available only in this job
       MONGODB_USERNAME: ${{secrets.MONGODB_USERNAME}} #available only in this job
       MONGODB_PASSWORD: ${{secrets.MONGODB_PASSWORD}} #available only in this job
       PORT: 8080
-    environment: testing
     runs-on: ubuntu-latest
     steps:
       - name: Get Code
